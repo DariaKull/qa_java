@@ -25,6 +25,5 @@ public class CatTest {
         when(feline.eatMeat()).thenReturn(List.of("сухой корм", "молоко"));
         Cat cat = new Cat(feline);
         assertEquals(List.of("сухой корм", "молоко"), cat.getFood());
-
     }
 }
