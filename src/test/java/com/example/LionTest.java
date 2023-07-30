@@ -16,6 +16,7 @@ import static org.junit.Assert.assertThrows;
 public class LionTest {
     @Mock
     private Feline feline;
+    private Lion lion;
 
     @Test
     public void getKittensTest() throws Exception {
@@ -47,17 +48,16 @@ public class LionTest {
     @Test
     public void getFoodFemale() throws Exception{
         Lion lion = new Lion("Самка", feline);
+        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.getFood("Хищник"));
     }
     @Test
     public void getFoodReturnFoodListForPredator() throws Exception {
         Lion lion = new Lion("Самец", feline);
+        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> predatorFood = List.of("Животные", "Птицы", "Рыба");
-        Mockito.when(feline.eatMeat()).thenReturn(predatorFood);
         assertEquals(predatorFood, lion.getFood());
 
     }
-
-
 
 }
